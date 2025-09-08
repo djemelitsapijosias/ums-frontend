@@ -10,8 +10,6 @@ function App() {
     .catch(err => setMessage("Error: " + err));
 }, []);
 
-
-
   return (
     <div>
       <h1>Frontend is running 🎉</h1>
