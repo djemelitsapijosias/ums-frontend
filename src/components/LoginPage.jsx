@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import SVGimage from "../assets/SVGimage.svg";
 import "../styles/LoginPage.css"; // import the CSS file
 
 /* ---------- Small reusable components ---------- */
@@ -60,23 +61,6 @@ const Button = ({
   </button>
 );
 
-/* ---------- Inline SVG illustration (Left side) ---------- */
-const LeftIllustration = () => (
-  <div className="illustration">
-    <svg
-      viewBox="0 0 700 520"
-      width="100%"
-      height="100%"
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label="Login illustration"
-    >
-      {/* simplified illustration */}
-      <rect x="160" y="180" rx="12" width="300" height="200" fill="#dfeeff" />
-      <circle cx="350" cy="120" r="40" fill="#1746d3" />
-    </svg>
-  </div>
-);
 
 /* ---------- Page component + form logic ---------- */
 export default function LoginPage() {
@@ -97,7 +81,7 @@ export default function LoginPage() {
       <div className="login-container">
         {/* Left illustration */}
         <div className="left-section">
-          <LeftIllustration />
+          <img src={SVGimage} alt="Phone illustration" />
         </div>
 
         {/* Right form */}
@@ -145,16 +129,16 @@ export default function LoginPage() {
             </div>
 
             <div className="button-group">
-              <Button  variant="primary">
-                Create account
+              <Button variant="primary">Create account</Button>
+              <Button type="submit" variant="outline">
+                Log in
               </Button>
-              <Button  type="submit" variant="outline">Log in</Button>
             </div>
           </form>
-              <div className="password-tip">
-                Use a strong password with letters, numbers and symbols for
-                better security.
-              </div>
+          <div className="password-tip">
+            Use a strong password with letters, numbers and symbols for better
+            security.
+          </div>
         </div>
       </div>
     </div>
