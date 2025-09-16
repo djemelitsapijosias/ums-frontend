@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../styles/SignupPage.css"; // custom styles
+import SVGimage from "../assets/SVGimage.svg";
+import { Link } from "react-router-dom";
 
 function SignupPage() {
   // Track the current step
@@ -37,8 +39,16 @@ function SignupPage() {
 
   return (
     <div className="signup-container">
+      {/* Left side image */}
+      <div className="signup-image">
+        <img src={SVGimage} alt="Welcome" />
+      </div>
+      
+      {/* Signup form */}
+
       <div className="signup-form">
         <h2 className="title">Create Account</h2>
+        
         <form onSubmit={handleSubmit}>
           {/* Step 1 */}
           {step === 1 && (
@@ -78,7 +88,9 @@ function SignupPage() {
 
               <div className="button-group">
                 <button type="button" className="btn secondary">
+                  <Link to="/LoginBox" style={{ textDecoration: 'none', color: 'inherit' }}>
                   Login
+                  </Link>
                 </button>
                 <button type="button" className="btn primary" onClick={nextStep}>
                   Next
@@ -192,10 +204,7 @@ function SignupPage() {
         </form>
       </div>
 
-      {/* Right side image */}
-      <div className="signup-image">
-        <img src="/signup-image.svg" alt="Signup Illustration" />
-      </div>
+      
     </div>
   );
 }

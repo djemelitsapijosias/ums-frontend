@@ -24,8 +24,15 @@ function LoginBox() {
             <InputField
               type="text"
               placeholder="Phone number, username, or email"
+              required="true"
+              name="email"
             />
-            <InputField type="password" placeholder="Password" />
+            <InputField 
+            type="password" 
+            placeholder="Password" 
+            required="true" 
+            name="Password"
+            />
             <LoginButton text="Log in" />
 
             <Divider />
@@ -37,7 +44,7 @@ function LoginBox() {
           <hr />
           <div className="login-box">
             <p>
-              Don’t have an account? <Link to="/SignupPage" className="fb-login">Sign up</Link>
+              Don’t have an account? <Link to="/signup" className="fb-login">Sign up</Link>
             </p>
           </div>
         </div>

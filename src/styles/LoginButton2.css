@@ -1,0 +1,23 @@
+.login-btn {
+  width: fit-content;
+  padding: 5px;
+  margin-top: 10px;
+  background-color: transparent; /* Instagram blue */
+  color: white;
+  border: 1px solid #5c5a5a;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: white;
+  color: #444;
+}
+.login-btn:active {
+    background-color: white;
+    color: #383535;
+}
+.login-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(58, 59, 61, 0.5);
+}

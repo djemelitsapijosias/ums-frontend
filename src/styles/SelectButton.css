@@ -1,0 +1,30 @@
+.select-container {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #121212;
+  border: 1px solid #444;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 14px;
+}
+.select-container::placeholder {
+  color: #aaa;
+}
+select {
+  appearance: none; /* Remove default styling */
+}
+
+.select-container:focus {
+  border-color: #007bff;
+  outline: none;
+  background-color: #1e1e1e;
+}
+.select-error {
+  border-color: #ff4d4f;
+}
+.select-error-message {
+  color: #ff4d4f;
+  font-size: 12px;
+  margin-top: 2px;
+}
