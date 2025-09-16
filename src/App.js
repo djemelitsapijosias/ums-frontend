@@ -1,8 +1,25 @@
 import React from "react";
-import LoginPage from "./components/LoginPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoginBox from "./components/LoginBox";
+import Footer from "./components/Footer";
+import SignupPage from "./components/SignupPage";
+
+import "./App.css";
 
 function App() {
-  return <LoginPage />;
+  return (
+    <Router>
+      <div className="app">
+        {/* All page routes */}
+        <Routes>
+          <Route path="/" element={<LoginBox />} />
+          <Route path="/SignupPage" element={<SignupPage />} />
+        </Routes>
+        {/* Footer is OUTSIDE Routes -> always visible */}
+        <Footer />
+      </div>
+    </Router>
+  );
 }
 
 export default App;

@@ -1,0 +1,14 @@
+.divider {
+  display: flex;
+  align-items: center;
+  color: #aaa;
+  margin: 15px 0;
+  font-size: 12px;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: #444;
+  margin: 0 10px;
+}
