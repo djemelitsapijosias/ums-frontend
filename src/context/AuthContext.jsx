@@ -8,11 +8,13 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const API = process.env.REACT_APP_API_URL || ''; // e.g. http://localhost:5000
+  // Backend API URL from environment or default
+  const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
-  // axios instance that includes cookies
+  // Axios instance with cookies enabled
   const api = axios.create({ baseURL: API, withCredentials: true });
 
+  // Fetch current logged-in user
   const fetchMe = async () => {
     try {
       const res = await api.get('/api/auth/me');
@@ -28,21 +30,39 @@ export const AuthProvider = ({ children }) => {
     fetchMe();
   }, []);
 
+  // LOGIN function
   const login = async (email, password) => {
-    const res = await api.post('/api/auth/login', { email, password });
-    setUser(res.data.user);
-    return res.data.user;
+    try {
+      const res = await api.post('/api/auth/login', { email, password });
+      setUser(res.data.user);
+      return res.data.user;
+    } catch (err) {
+      // Handle backend errors
+      const message = err.response?.data?.message || 'Login failed';
+      throw new Error(message);
+    }
   };
 
+  // REGISTER function
   const register = async (payload) => {
-    const res = await api.post('/api/auth/register', payload);
-    setUser(res.data.user);
-    return res.data.user;
+    try {
+      const res = await api.post('/api/auth/register', payload);
+      setUser(res.data.user);
+      return res.data.user;
+    } catch (err) {
+      const message = err.response?.data?.message || 'Registration failed';
+      throw new Error(message);
+    }
   };
 
+  // LOGOUT function
   const logout = async () => {
-    await api.post('/api/auth/logout');
-    setUser(null);
+    try {
+      await api.post('/api/auth/logout');
+      setUser(null);
+    } catch (err) {
+      console.error('Logout error', err);
+    }
   };
 
   return (
