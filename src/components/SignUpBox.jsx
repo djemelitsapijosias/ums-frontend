@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import InputField from "./InputField";
 import LoginButton from "./LoginButton";
 import Divider from "./Divider";
 import Select from "./SelectButton";
 import "../styles/LoginBox.css";
 import SVGimage from "../assets/SVGimage.svg";
-import Loginform from "./LoginBox";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
-function LoginBox() {
-  //select options
-  const [selectedValue, setSelectedValue] = useState("");
+function RegisterBox() {
+  const { register } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const options = [
     { placeholder: "Sex", value: "" },
@@ -26,10 +26,8 @@ function LoginBox() {
     { placeholder: "Secretory", value: "Secretory" },
   ];
 
-  // Track the current step
   const [step, setStep] = useState(1);
-
-  // Store form data
+  const [err, setErr] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     contact: "",
@@ -43,14 +41,64 @@ function LoginBox() {
     confirmPassword: "",
   });
 
-  // Handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle navigation
-  const nextStep = () => setStep(step + 1);
+  const handleSelectChange = (name, value) => {
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Validate current step fields
+  const validateStep = () => {
+    setErr("");
+    if (step === 1) {
+      if (!formData.fullName || !formData.contact || !formData.email) {
+        setErr("Please fill all fields in Step 1");
+        return false;
+      }
+    } else if (step === 2) {
+      if (!formData.dob || !formData.pob || !formData.sex) {
+        setErr("Please fill all fields in Step 2");
+        return false;
+      }
+    } else if (step === 3) {
+      if (
+        !formData.role ||
+        !formData.username ||
+        !formData.password ||
+        !formData.confirmPassword
+      ) {
+        setErr("Please fill all fields in Step 3");
+        return false;
+      }
+      if (formData.password !== formData.confirmPassword) {
+        setErr("Passwords do not match");
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const nextStep = () => {
+    if (validateStep()) setStep(step + 1);
+  };
   const prevStep = () => setStep(step - 1);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateStep()) return;
+
+    try {
+      const user = await register(formData);
+      console.log("Registered user:", user);
+      navigate("/dashboard");
+    } catch (error) {
+      setErr(
+        error.response?.data?.message || error.message || "Registration failed"
+      );
+    }
+  };
 
   return (
     <div className="login-page">
@@ -58,23 +106,17 @@ function LoginBox() {
         <div className="left-section">
           <img src={SVGimage} alt="Welcome Image" />
         </div>
-
-        {/* Middle Section */}
         <div className="middle-section"></div>
-
-        {/* Right form */}
         <div className="right-section">
           <div className="login-box">
             <h1 className="logo">Register Now!</h1>
-
-            <form action="">
+            <form onSubmit={handleSubmit}>
               {/* Step 1 */}
               {step === 1 && (
                 <>
                   <InputField
                     type="text"
                     placeholder="Full Name"
-                    required="true"
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
@@ -82,15 +124,14 @@ function LoginBox() {
                   <InputField
                     type="text"
                     placeholder="+237 6XX XX XX XX"
-                    required="true"
                     name="contact"
                     value={formData.contact}
                     onChange={handleChange}
                   />
                   <InputField
                     type="email"
-                    placeholder="email"
-                    required="true"
+                    placeholder="Email"
+                    required
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
@@ -111,13 +152,14 @@ function LoginBox() {
                   </div>
                 </>
               )}
+
               {/* Step 2 */}
               {step === 2 && (
                 <>
                   <InputField
                     type="date"
-                    placeholder="date of birth"
-                    required="true"
+                    placeholder="Date of Birth"
+                    required
                     name="dob"
                     value={formData.dob}
                     onChange={handleChange}
@@ -125,17 +167,17 @@ function LoginBox() {
                   <InputField
                     type="text"
                     placeholder="Place of Birth"
-                    required="true"
+                    required
                     name="pob"
                     value={formData.pob}
                     onChange={handleChange}
                   />
                   <Select
                     name="sex"
-                    required="true"
+                    required
                     options={options}
-                    value={formData.selectedValue}
-                    onChange={setSelectedValue}
+                    value={formData.sex}
+                    onChange={(value) => handleSelectChange("sex", value)}
                   />
                   <div className="button-group">
                     <button
@@ -143,7 +185,7 @@ function LoginBox() {
                       className="btn secondary"
                       onClick={prevStep}
                     >
-                      <span className="fb-login">Previous</span>
+                      Previous
                     </button>
                     <button
                       type="button"
@@ -155,53 +197,68 @@ function LoginBox() {
                   </div>
                 </>
               )}
+
               {/* Step 3 */}
               {step === 3 && (
                 <>
                   <Select
                     name="role"
-                    required="true"
+                    required
                     options={options2}
-                    value={formData.selectedValue}
-                    onChange={setSelectedValue}
+                    value={formData.role}
+                    onChange={(value) => handleSelectChange("role", value)}
+                  />
+                  <InputField
+                    type="text"
+                    placeholder="Username"
+                    required
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
                   />
                   <InputField
                     type="password"
                     placeholder="Enter Password"
-                    required="true"
+                    required
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
                   />
-
                   <InputField
                     type="password"
                     placeholder="Confirm Password"
-                    required="true"
-                    name="password"
-                    value={formData.password}
+                    required
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
                     onChange={handleChange}
                   />
-
                   <div className="button-group">
                     <button
                       type="button"
                       className="btn secondary"
                       onClick={prevStep}
                     >
-                      <span className="fb-login">Previous</span>
+                      Previous
                     </button>
-                    <button type="submit" className="btn primary">
+                    <button
+                      type="submit"
+                      className="btn primary"
+                    >
                       Register
                     </button>
+                    
                   </div>
                 </>
               )}
 
+              {err && (
+                <div style={{ color: "red", marginTop: "10px" }}>{err}</div>
+              )}
               <Divider />
             </form>
+
             <p>
-              already have an account?{" "}
+              Already have an account?{" "}
               <Link to="/" className="fb-login">
                 Log In
               </Link>
@@ -213,4 +270,4 @@ function LoginBox() {
   );
 }
 
-export default LoginBox;
+export default RegisterBox;

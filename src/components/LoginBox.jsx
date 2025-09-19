@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useState, useContext } from 'react';
 import InputField from "./InputField";
 import LoginButton from "./LoginButton";
 import Divider from "./Divider";
 import "../styles/LoginBox.css";
 import SVGimage from "../assets/SVGimage.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from '../context/AuthContext';
 
 function LoginBox() {
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [err, setErr] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const user = await login(email, password);
+      console.log('user id:', user.id);
+      navigate('/dashboard'); // protected route
+    } catch (error) {
+      setErr(error.response?.data?.message || error.message || 'Login failed');
+    }
+  };
+
   return (
     <div className="login-page">
       <div className="login-container">
@@ -14,26 +32,28 @@ function LoginBox() {
           <img src={SVGimage} alt="Welcome" />
         </div>
         <div className="middle-section"></div>
-        {/* Right form */}
         <div className="right-section">
           <div className="login-box">
             <h1 className="logo">Welcome !</h1>
-            <form action="">
+            <form onSubmit={handleSubmit}>
               <InputField
                 type="text"
                 placeholder="Phone number, username, or email"
-                required="true"
+                required
                 name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <InputField
                 type="password"
                 placeholder="Password"
-                required="true"
-                name="Password"
+                required
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
-              <Link to="/dashboard">
-                <LoginButton text="Log in" />
-              </Link>
+              <LoginButton text="Log in" type="submit" />
+              {err && <div style={{ color: 'red', marginTop: '10px' }}>{err}</div>}
             </form>
             <Divider />
             <Link to="/FogotPassword" className="forgot-link">
