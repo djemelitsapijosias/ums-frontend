@@ -67,7 +67,7 @@ function LoginBox() {
           <div className="login-box">
             <h1 className="logo">Register Now!</h1>
 
-            <form>
+            <form action="">
               {/* Step 1 */}
               {step === 1 && (
                 <>
