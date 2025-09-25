@@ -1,0 +1,141 @@
+/* Sidebar Base */
+.sidebar {
+  width: 250px;
+  min-height: 100vh;
+  background-color: #222d32;
+  color: #fff;
+  padding: 10px 0;
+}
+.main-sidebar {
+  width: 50px;
+  background-color: #222d32;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 10px;
+}
+
+/* Brand */
+.brand-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.brand-image {
+  width: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+/* User Panel */
+.user-panel {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.user-panel .image img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.user-panel .info {
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+/* Menu */
+.menu {
+  flex: 1;
+  padding: 10px 0;
+}
+
+.menu-item {
+  list-style: none;
+}
+
+.menu-title {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  cursor: pointer;
+  color: #cfd8dc;
+  transition: background 0.3s;
+}
+
+.menu-title:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.menu-title p {
+  flex: 1;
+  margin: 0 10px;
+  font-weight: 500;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.arrow.rotate {
+  transform: rotate(-90deg);
+}
+
+/* Submenu */
+.submenu {
+  padding-left: 20px;
+}
+
+.submenu li {
+  list-style: none;
+}
+
+.submenu a {
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+  text-decoration: none;
+  color: #e0e0e0;
+  transition: background 0.3s;
+  border-radius: 4px;
+}
+
+.submenu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.submenu i {
+  margin-right: 8px;
+}
+
+/* Logout Button */
+.logout {
+  margin-top: auto;
+  padding: 10px 15px;
+}
+
+.logout button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: #e57373;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 0;
+  transition: color 0.2s;
+}
+
+.logout button:hover {
+  color: #ff5252;
+}

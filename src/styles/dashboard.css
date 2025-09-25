@@ -1,0 +1,159 @@
+/* ========== General Layout ========== */
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ========== Sidebar ========== */
+.main-sidebar {
+  width: 250px;
+  background-color: #222d32;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 10px;
+}
+
+.main-panel{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background:transparent;
+}
+
+.brand-link {
+  display: block;
+  font-size: 1.25rem;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.user-panel {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #444;
+}
+
+.user-panel .image img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.user-panel .info a {
+  color: #fff;
+  margin-left: 10px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-sidebar {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.nav-sidebar .nav-item {
+  margin: 5px 0;
+}
+
+.nav-sidebar .nav-link {
+  display: flex;
+  align-items: center;
+  color: #b8c7ce;
+  padding: 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.nav-sidebar .nav-link:hover,
+.nav-sidebar .nav-link.active {
+  background-color: #1e282c;
+  color: #fff;
+}
+
+.nav-sidebar .nav-icon {
+  margin-right: 10px;
+}
+
+
+/* ========== Dashboard Cards ========== */
+.dashboard-card {
+  background: #1e282c;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+}
+
+.dashboard-icon {
+  font-size: 2rem;
+  color: #fff;
+  border-radius: 50%;
+  padding: 15px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-primary { background: #007bff; }
+.bg-success { background: #28a745; }
+.bg-warning { background: #ffc107; color: #000; }
+.bg-danger { background: #dc3545; }
+
+.dashboard-title {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.dashboard-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* ========== Cards (Quick Links, Activities) ========== */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.card-header {
+  font-weight: bold;
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+  background: #f5f5f5;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.list-group {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.list-group-item {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}

@@ -1,10 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginBox from "./components/LoginBox";
-import Footer from "./components/Footer";
 import SignUpBox from "./components/SignUpBox";
 import FogotPassword from "./components/FogotPassword";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./pages/Dashboard";
 
 import "./App.css";
 
@@ -19,8 +18,6 @@ function App() {
           <Route path="/FogotPassword" element={<FogotPassword />} />
           <Route path="/dashboard" element={<Dashboard/>}  />
         </Routes>
-        {/* Footer is OUTSIDE Routes -> always visible */}
-        <Footer />
       </div>
     </Router>
   );

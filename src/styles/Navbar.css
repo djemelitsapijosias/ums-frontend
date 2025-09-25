@@ -1,0 +1,131 @@
+/* Navbar layout */
+.main-header.navbar {
+  background-color: #1A237E;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Left / center / right layout */
+.nav-left,
+.nav-center,
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Distribute: left and right fixed, center grows */
+.nav-left { flex: 0 0 auto; gap: 8px; }
+.nav-center { flex: 1 1 auto; justify-content: center; }
+.nav-right { flex: 0 0 auto; gap: 12px; }
+
+/* Icon button (hamburger / search button) */
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.05rem;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.icon-btn:hover { background: rgba(255,255,255,0.06); }
+
+/* Home link */
+.home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+.home-link:hover { background: rgba(255,255,255,0.04); }
+.home-icon { font-size: 1rem; }
+.home-text { font-weight: 600; }
+
+/* Search area */
+.search-form { width: 100%; max-width: 640px; display:flex; justify-content:center; }
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.06);
+  padding: 4px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 560px;
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.02);
+}
+.search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  padding: 8px 10px;
+  width: 100%;
+  font-size: 0.95rem;
+}
+.search-input::placeholder { color: rgba(255,255,255,0.7); }
+.search-btn {
+  background: #3949AB;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-left: 6px;
+  color: #fff;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Right side: user + logout */
+.user-info {
+  color: #fff;
+  font-weight: 600;
+  margin-right: 6px;
+}
+.logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #ffebee;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.logout-btn:hover {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  border-color: rgba(255,255,255,0.14);
+}
+.logout-text { display: inline-block; font-size: 0.95rem; }
+
+/* Small screens */
+@media (max-width: 800px) {
+  .search-form { display: none; } /* hide search on small screens */
+  .user-name { display: none; }
+  .home-text { display: none; }
+}
+
+/* SweetAlert2 custom classes (if you use customClass) */
+.swal-confirm-btn {
+  background-color: #1A237E !important;
+  color: white !important;
+}
+.swal-cancel-btn {
+  background-color: #d33 !important;
+  color: white !important;
+}

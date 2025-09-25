@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import InputField from "./InputField";
-import LoginButton from "./LoginButton";
 import Divider from "./Divider";
 import Select from "./SelectButton";
 import "../styles/LoginBox.css";
 import SVGimage from "../assets/SVGimage.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import Footer from "./Footer";
 
 function RegisterBox() {
   const { register } = useContext(AuthContext);
@@ -16,14 +16,15 @@ function RegisterBox() {
     { placeholder: "Sex", value: "" },
     { placeholder: "Male", value: "M" },
     { placeholder: "Female", value: "F" },
-    { placeholder: "Other", value: "O" },
   ];
 
   const options2 = [
     { placeholder: "Role", value: "" },
     { placeholder: "Admin", value: "admin" },
-    { placeholder: "Student", value: "Student" },
-    { placeholder: "Secretory", value: "Secretory" },
+    { placeholder: "Student", value: "student" },
+    { placeholder: "Secretory", value: "secretary" },
+    { placeholder: "Accountant", value: "accountant" },
+    { placeholder: "Lecturer", value: "teacher" },
   ];
 
   const [step, setStep] = useState(1);
@@ -101,171 +102,172 @@ function RegisterBox() {
   };
 
   return (
-    <div className="login-page">
-      <div className="login-container">
-        <div className="left-section">
-          <img src={SVGimage} alt="Welcome Image" />
-        </div>
-        <div className="middle-section"></div>
-        <div className="right-section">
-          <div className="login-box">
-            <h1 className="logo">Register Now!</h1>
-            <form onSubmit={handleSubmit}>
-              {/* Step 1 */}
-              {step === 1 && (
-                <>
-                  <InputField
-                    type="text"
-                    placeholder="Full Name"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                  />
-                  <InputField
-                    type="text"
-                    placeholder="+237 6XX XX XX XX"
-                    name="contact"
-                    value={formData.contact}
-                    onChange={handleChange}
-                  />
-                  <InputField
-                    type="email"
-                    placeholder="Email"
-                    required
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
-                  <div className="button-group">
-                    <button type="button" className="btn secondary">
-                      <Link to="/" className="fb-login">
-                        Back
-                      </Link>
-                    </button>
-                    <button
-                      type="button"
-                      className="btn primary"
-                      onClick={nextStep}
-                    >
-                      Next
-                    </button>
+    <div className="">
+      <div className="login-page">
+        <div className="login-container">
+          <div className="left-section">
+            <img src={SVGimage} alt="Welcome user" />
+          </div>
+          <div className="middle-section"></div>
+          <div className="right-section">
+            <div className="login-box">
+              <h1 className="logo">Register Now!</h1>
+              <form onSubmit={handleSubmit}>
+                {/* Step 1 */}
+                {step === 1 && (
+                  <>
+                    <InputField
+                      type="text"
+                      placeholder="Full Name"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                    />
+                    <InputField
+                      type="text"
+                      placeholder="+237 6XX XX XX XX"
+                      name="contact"
+                      value={formData.contact}
+                      onChange={handleChange}
+                    />
+                    <InputField
+                      type="email"
+                      placeholder="Email"
+                      required
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                    <div className="button-group">
+                      <button type="button" className="btn secondary">
+                        <Link to="/" className="fb-login">
+                          Back
+                        </Link>
+                      </button>
+                      <button
+                        type="button"
+                        className="btn primary"
+                        onClick={nextStep}
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </>
+                )}
+
+                {/* Step 2 */}
+                {step === 2 && (
+                  <>
+                    <InputField
+                      type="date"
+                      placeholder="Date of Birth"
+                      required
+                      name="dob"
+                      value={formData.dob}
+                      onChange={handleChange}
+                    />
+                    <InputField
+                      type="text"
+                      placeholder="Place of Birth"
+                      required
+                      name="pob"
+                      value={formData.pob}
+                      onChange={handleChange}
+                    />
+                    <Select
+                      name="sex"
+                      required
+                      options={options}
+                      value={formData.sex}
+                      onChange={(value) => handleSelectChange("sex", value)}
+                    />
+                    <div className="button-group">
+                      <button
+                        type="button"
+                        className="btn secondary"
+                        onClick={prevStep}
+                      >
+                        Previous
+                      </button>
+                      <button
+                        type="button"
+                        className="btn primary"
+                        onClick={nextStep}
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </>
+                )}
+
+                {/* Step 3 */}
+                {step === 3 && (
+                  <>
+                    <Select
+                      name="role"
+                      required
+                      options={options2}
+                      value={formData.role}
+                      onChange={(value) => handleSelectChange("role", value)}
+                    />
+                    <InputField
+                      type="text"
+                      placeholder="Username"
+                      required
+                      name="username"
+                      value={formData.username}
+                      onChange={handleChange}
+                    />
+                    <InputField
+                      type="password"
+                      placeholder="Enter Password(atleast 8 characters)"
+                      required
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                    />
+                    <InputField
+                      type="password"
+                      placeholder="Confirm Password"
+                      required
+                      name="confirmPassword"
+                      value={formData.confirmPassword}
+                      onChange={handleChange}
+                    />
+                    <div className="button-group">
+                      <button
+                        type="button"
+                        className="btn secondary"
+                        onClick={prevStep}
+                      >
+                        Previous
+                      </button>
+                      <button type="submit" className="btn primary">
+                        Register
+                      </button>
+                    </div>
+                  </>
+                )}
+
+                {err && (
+                  <div style={{ color: "#f97a7a", marginTop: "10px" }}>
+                    {err}
                   </div>
-                </>
-              )}
+                )}
+                <Divider />
+              </form>
 
-              {/* Step 2 */}
-              {step === 2 && (
-                <>
-                  <InputField
-                    type="date"
-                    placeholder="Date of Birth"
-                    required
-                    name="dob"
-                    value={formData.dob}
-                    onChange={handleChange}
-                  />
-                  <InputField
-                    type="text"
-                    placeholder="Place of Birth"
-                    required
-                    name="pob"
-                    value={formData.pob}
-                    onChange={handleChange}
-                  />
-                  <Select
-                    name="sex"
-                    required
-                    options={options}
-                    value={formData.sex}
-                    onChange={(value) => handleSelectChange("sex", value)}
-                  />
-                  <div className="button-group">
-                    <button
-                      type="button"
-                      className="btn secondary"
-                      onClick={prevStep}
-                    >
-                      Previous
-                    </button>
-                    <button
-                      type="button"
-                      className="btn primary"
-                      onClick={nextStep}
-                    >
-                      Next
-                    </button>
-                  </div>
-                </>
-              )}
-
-              {/* Step 3 */}
-              {step === 3 && (
-                <>
-                  <Select
-                    name="role"
-                    required
-                    options={options2}
-                    value={formData.role}
-                    onChange={(value) => handleSelectChange("role", value)}
-                  />
-                  <InputField
-                    type="text"
-                    placeholder="Username"
-                    required
-                    name="username"
-                    value={formData.username}
-                    onChange={handleChange}
-                  />
-                  <InputField
-                    type="password"
-                    placeholder="Enter Password"
-                    required
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                  />
-                  <InputField
-                    type="password"
-                    placeholder="Confirm Password"
-                    required
-                    name="confirmPassword"
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                  />
-                  <div className="button-group">
-                    <button
-                      type="button"
-                      className="btn secondary"
-                      onClick={prevStep}
-                    >
-                      Previous
-                    </button>
-                    <button
-                      type="submit"
-                      className="btn primary"
-                    >
-                      Register
-                    </button>
-                    
-                  </div>
-                </>
-              )}
-
-              {err && (
-                <div style={{ color: "red", marginTop: "10px" }}>{err}</div>
-              )}
-              <Divider />
-            </form>
-
-            <p>
-              Already have an account?{" "}
-              <Link to="/" className="fb-login">
-                Log In
-              </Link>
-            </p>
+              <p>
+                Already have an account?{" "}
+                <Link to="/" className="fb-login">
+                  Log In
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
