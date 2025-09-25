@@ -9,7 +9,7 @@ export default function Navbar({ onToggleSidebar }) {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // toggle the sidebar (if parent passed handler) or toggle body class fallback
+  // Toggle sidebar handler
   const handleToggle = () => {
     if (typeof onToggleSidebar === "function") {
       onToggleSidebar();
@@ -18,7 +18,7 @@ export default function Navbar({ onToggleSidebar }) {
     }
   };
 
-  // Logout with SweetAlert2 confirm
+  // Logout handler with SweetAlert2 confirmation
   const handleLogout = async () => {
     const result = await Swal.fire({
       title: "Are you sure you want to log out?",
@@ -39,36 +39,38 @@ export default function Navbar({ onToggleSidebar }) {
 
     if (result.isConfirmed) {
       try {
-        await logout();            // uses AuthContext.logout()
-        navigate("/");       // send user to login page
+        await logout();               // Clears user state and cookies
+        navigate("/");           // Redirect to login page
+        Swal.fire("Logged Out", "You have successfully logged out.", "success");
       } catch (err) {
-        console.error("logout failed", err);
+        console.error("Logout failed", err);
         Swal.fire("Error", "Logout failed. Try again.", "error");
       }
     }
   };
 
-  // search handler - navigates to /search?q=...
+  // Search handler
   const handleSearch = (e) => {
     e.preventDefault();
-    const q = e.target.search?.value?.trim();
-    if (!q) return;
-    navigate(`/search?q=${encodeURIComponent(q)}`);
+    const query = e.target.search?.value?.trim();
+    if (!query) return;
+    navigate(`/search?q=${encodeURIComponent(query)}`);
   };
 
   return (
-    <nav className="main-header navbar">
+    <nav className="main-header navbar navbar-expand navbar-dark" style={{ backgroundColor: "#1A237E" }}>
+      {/* Left Section */}
       <div className="nav-left">
         <button className="icon-btn" onClick={handleToggle} aria-label="Toggle sidebar">
           <FaBars />
         </button>
-
         <a className="nav-link home-link" href="/" title="Home">
           <FaHome className="home-icon" />
           <span className="home-text">Home</span>
         </a>
       </div>
 
+      {/* Center Section - Search */}
       <div className="nav-center">
         <form className="search-form" onSubmit={handleSearch}>
           <div className="search-wrapper">
@@ -87,6 +89,7 @@ export default function Navbar({ onToggleSidebar }) {
         </form>
       </div>
 
+      {/* Right Section - User Info and Logout */}
       <div className="nav-right">
         <div className="user-info">
           <span className="user-name">{user?.fullName || user?.name || "Admin"}</span>

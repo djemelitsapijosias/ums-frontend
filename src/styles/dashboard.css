@@ -84,7 +84,7 @@
 
 /* ========== Dashboard Cards ========== */
 .dashboard-card {
-  background: #1e282c;
+  background: rgba(112, 102, 224, 0.5);
   border-radius: 10px;
   padding: 20px;
   display: flex;
