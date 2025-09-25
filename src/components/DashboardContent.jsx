@@ -1,5 +1,8 @@
 import React from "react";
 import DashboardCard from "../components/DashboardCard";
+import TimetableCard from "../components/TimetableCard";
+import ActivityLogsCard from "../components/ActivityLogsCard";
+
 import {
   FaUserGraduate,
   FaChalkboardTeacher,
@@ -16,7 +19,35 @@ const Dashboard = () => {
   const teacherCountper = 100;
   const percentmessage = 60;
   const today = new Date().toLocaleDateString();
+  const timetable = [
+    {
+      course_name: "Mathematics",
+      session_name: "Morning",
+      time_shift: "08:00-10:00",
+      lecturer_name: "Dr. Smith",
+    },
+    {
+      course_name: "Physics",
+      session_name: "Afternoon",
+      time_shift: "12:00-14:00",
+      lecturer_name: "Prof. John",
+    },
+  ];
 
+  const activityLogs = [
+    {
+      name: "Admin",
+      action: "added a new student",
+      page: "Enroll Page",
+      logged_at: "2025-09-25 09:00",
+    },
+    {
+      name: "Admin",
+      action: "recorded a payment",
+      page: "Payment Page",
+      logged_at: "2025-09-25 08:45",
+    },
+  ];
   return (
     <div>
       <div className="row">
@@ -82,6 +113,23 @@ const Dashboard = () => {
               <i className="fas fa-paper-plane"></i> Send Message
             </a>
           </div>
+        </div>
+      </div>
+      {/* Timetable & Activity Logs */}
+      <div className="row mt-4">
+        <div className="col-md-6">
+          <TimetableCard
+            title="Today's Timetable"
+            bgColor="#1A237E"
+            items={timetable}
+          />
+        </div>
+        <div className="col-md-6">
+          <ActivityLogsCard
+            title="Recent Activity Logs"
+            bgColor="#6c757d"
+            logs={activityLogs}
+          />
         </div>
       </div>
     </div>
