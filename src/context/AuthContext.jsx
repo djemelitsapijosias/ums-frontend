@@ -37,7 +37,6 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data.user);
       return res.data.user;
     } catch (err) {
-      // Handle backend errors
       const message = err.response?.data?.message || "Login failed";
       throw new Error(message);
     }
@@ -59,11 +58,32 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await api.post("/api/auth/logout");
-      setUser(null);
     } catch (err) {
       console.error("Logout error", err);
+    } finally {
+      setUser(null);
     }
   };
+
+  // Interceptor: Handle expired Token (401)
+  api.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+      if (error.response?.status === 401) {
+        // auto logout on expired/invalid token
+        await logout();
+
+        // ✅ Prevent infinite redirect loop if already on login page
+        if (
+          !window.location.pathname.startsWith("/login") &&
+          window.location.pathname !== "/"
+        ) {
+          window.location.href = "/";
+        }
+      }
+      return Promise.reject(error);
+    }
+  );
 
   return (
     <AuthContext.Provider

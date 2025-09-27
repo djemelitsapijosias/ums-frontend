@@ -1,7 +1,7 @@
 .divider {
   display: flex;
   align-items: center;
-  color: #aaa;
+  color: #FFFFFF;
   margin: 15px 0;
   font-size: 12px;
 }
@@ -9,6 +9,7 @@
 .line {
   flex: 1;
   height: 1px;
-  background-color: #444;
+  background-color: #9964ef;
+;
   margin: 0 10px;
 }

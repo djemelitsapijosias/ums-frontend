@@ -2,7 +2,7 @@
   width: 100%;
   padding: 10px;
   margin-top: 10px;
-  background-color: #385185; /* Instagram blue */
+  background-color: #6c2aef; /* Instagram blue */
   color: white;
   border: none;
   border-radius: 6px;
@@ -11,10 +11,10 @@
 }
 
 .login-btn:hover {
-  background-color: #2c3e8e;
+  background-color: #7a46e2;
 }
 .login-btn:active {
-  background-color: #1e2a6f;
+  background-color: #641cf3;
 }
 .login-btn:disabled {
   background-color: #999;

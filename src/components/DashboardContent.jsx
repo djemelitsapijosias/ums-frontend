@@ -2,7 +2,7 @@ import React from "react";
 import DashboardCard from "../components/DashboardCard";
 import TimetableCard from "../components/TimetableCard";
 import ActivityLogsCard from "../components/ActivityLogsCard";
-
+import { Link } from "react-router-dom";
 import {
   FaUserGraduate,
   FaChalkboardTeacher,
@@ -99,19 +99,22 @@ const Dashboard = () => {
         </div>
         <div className="card-body">
           <p>Today is {today}.</p>
-          <div className="quick-links mt-3">
-            <a href="/enroll" className="btn btn-primary">
+          <div className="mt-3" style={{ justifyContent: "space-between" }}>
+            <Link to="/enroll" className="btn btn-primary">
               <i className="fas fa-user-plus"></i> Add Student
-            </a>
-            <a href="/record-payment" className="btn btn-success">
+            </Link>
+            <Link to="/record-payment" className="btn btn-success">
               <i className="fas fa-coins"></i> Record Payment
-            </a>
-            <a href="/timetable" className="btn btn-info">
+            </Link>
+            <Link to="/timetable" className="btn btn-info">
               <i className="fas fa-calendar-alt"></i> View Timetable
-            </a>
-            <a href="/messages" className="btn btn-dark">
+            </Link>
+            <Link to="/messages" className="btn btn-dark">
               <i className="fas fa-paper-plane"></i> Send Message
-            </a>
+            </Link>
+            <Link to="/messages" className="btn btn-grey">
+              <i className="fas fa-paper-plane"></i> Clear System Logs
+            </Link>
           </div>
         </div>
       </div>

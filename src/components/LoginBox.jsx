@@ -7,22 +7,41 @@ import SVGimage from "../assets/SVGimage.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import Footer from "./Footer";
+import Swal from "sweetalert2";
 
 function LoginBox() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [err, setErr] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const user = await login(email, password);
       console.log("user id:", user.id);
+
+      // ✅ Success popup
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful",
+        text: `Welcome back, ${user.fullName || user.username || "User"}!`,
+        timer: 2000,
+        showConfirmButton: false,
+      });
+
       navigate("/dashboard"); // protected route
     } catch (error) {
-      setErr(error.response?.data?.message || error.message || "Login failed");
+      // ❌ Error popup
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text:
+          error.response?.data?.message ||
+          error.message ||
+          "Invalid credentials. Try again.",
+        confirmButtonColor: "#e74c3c",
+      });
     }
   };
 
@@ -36,7 +55,7 @@ function LoginBox() {
           <div className="middle-section"></div>
           <div className="right-section">
             <div className="login-box">
-              <h1 className="logo">Welcome !</h1>
+              <h1 className="logo">Welcome!</h1>
               <form onSubmit={handleSubmit}>
                 <InputField
                   type="text"
@@ -55,13 +74,8 @@ function LoginBox() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <LoginButton text="Log in" type="submit" />
-                {err && (
-                  <div style={{ color: "#f97a7a", marginTop: "10px" }}>
-                    {err}
-                  </div>
-                )}
               </form>
-              <Divider />
+              <Divider text={"OR"}></Divider>
               <Link to="/FogotPassword" className="forgot-link">
                 Forgot password?
               </Link>

@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles/Divider.css";
 
-function Divider() {
+function Divider({text}) {
   return (
     <div className="divider">
       <div className="line"></div>
-      <span>OR</span>
+      <span>{text}</span>
       <div className="line"></div>
     </div>
   );

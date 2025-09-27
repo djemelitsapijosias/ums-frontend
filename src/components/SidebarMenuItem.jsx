@@ -1,23 +1,29 @@
 // src/components/SidebarMenuItem.jsx
-import React, { useState } from "react";
-import { FaAngleLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
-function SidebarMenuItem({ title, icon, items }) {
-  const [open, setOpen] = useState(false);
+const SidebarMenuItem = ({ title, icon, items, activeMenu, setActiveMenu, id }) => {
+  const location = useLocation();
+  const isOpen = activeMenu === id;
+
+  const handleToggle = () => {
+    if (document.body.classList.contains("sidebar-collapsed")) return;
+    setActiveMenu(isOpen ? null : id);
+  };
 
   return (
-    <li className={`menu-item ${open ? "open" : ""}`}>
-      <div className="menu-title" onClick={() => setOpen(!open)}>
+    <li className={`menu-item ${isOpen ? "open" : ""}`}>
+      <div className="menu-title" onClick={handleToggle}>
         {icon}
         <p>{title}</p>
-        <FaAngleLeft className={`arrow ${open ? "rotate" : ""}`} />
+        {items && items.length > 0 && <span className={`arrow ${isOpen ? "rotate" : ""}`}>&gt;</span>}
       </div>
-      {open && (
+
+      {items && isOpen && (
         <ul className="submenu">
-          {items.map((item, i) => (
-            <li key={i}>
-              <Link to={item.path}>
+          {items.map((item, idx) => (
+            <li key={idx}>
+              <Link to={item.path} className={location.pathname === item.path ? "active" : ""}>
                 <i className={item.icon}></i>
                 <span>{item.label}</span>
               </Link>
@@ -27,6 +33,6 @@ function SidebarMenuItem({ title, icon, items }) {
       )}
     </li>
   );
-}
+};
 
 export default SidebarMenuItem;

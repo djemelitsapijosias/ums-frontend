@@ -2,7 +2,7 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Footer from "../components/FooterDasboard";
 import Content from "../components/DashboardContent";
 import "../styles/dashboard.css";
 const DashboardLayout = ({ children }) => {

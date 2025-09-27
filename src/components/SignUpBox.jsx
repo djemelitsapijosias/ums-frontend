@@ -7,6 +7,7 @@ import SVGimage from "../assets/SVGimage.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import Footer from "./Footer";
+import Swal from "sweetalert2"; // ✅ Import SweetAlert2
 
 function RegisterBox() {
   const { register } = useContext(AuthContext);
@@ -93,11 +94,33 @@ function RegisterBox() {
     try {
       const user = await register(formData);
       console.log("Registered user:", user);
-      navigate("/dashboard");
+
+      // ✅ Success SweetAlert
+      Swal.fire({
+        title: "Registration Successful 🎉",
+        text: `Welcome, ${user.fullName || user.username}!`,
+        icon: "success",
+        confirmButtonText: "Go to Dashboard",
+        confirmButtonColor: "#3B1E77",
+      }).then(() => {
+        navigate("/dashboard");
+      });
     } catch (error) {
-      setErr(
-        error.response?.data?.message || error.message || "Registration failed"
-      );
+      const message =
+        error.response?.data?.message ||
+        error.message ||
+        "Registration failed";
+
+      // ✅ Error SweetAlert
+      Swal.fire({
+        title: "Registration Failed",
+        text: message,
+        icon: "error",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#F39C12",
+      });
+
+      setErr(message);
     }
   };
 
@@ -250,11 +273,11 @@ function RegisterBox() {
                 )}
 
                 {err && (
-                  <div style={{ color: "#f97a7a", marginTop: "10px" }}>
+                  <div style={{ color: "#F39C12", marginTop: "10px" }}>
                     {err}
                   </div>
                 )}
-                <Divider />
+                <Divider text={"OR"}></Divider>
               </form>
 
               <p>

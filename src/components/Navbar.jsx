@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FaBars, FaHome, FaSearch, FaSignOutAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import "../styles/Navbar.css";
 
@@ -25,12 +25,12 @@ export default function Navbar({ onToggleSidebar }) {
       text: "You won't be able to cancel this action!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#1A237E",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#7a46e2",
+      cancelButtonColor: "#F39C12",
       confirmButtonText: "Yes, log out!",
       cancelButtonText: "Cancel",
       background: "#f4f6f9",
-      color: "#1A237E",
+      color: "#7a46e2",
       customClass: {
         confirmButton: "swal-confirm-btn",
         cancelButton: "swal-cancel-btn",
@@ -58,16 +58,16 @@ export default function Navbar({ onToggleSidebar }) {
   };
 
   return (
-    <nav className="main-header navbar navbar-expand navbar-dark" style={{ backgroundColor: "#1A237E" }}>
+    <nav className="main-header navbar navbar-expand navbar-dark" >
       {/* Left Section */}
       <div className="nav-left">
         <button className="icon-btn" onClick={handleToggle} aria-label="Toggle sidebar">
           <FaBars />
         </button>
-        <a className="nav-link home-link" href="/" title="Home">
+        <span>&nbsp;   &nbsp;</span>
+        <Link className="nav-link home-link" to="/dashboard" title="Home">
           <FaHome className="home-icon" />
-          <span className="home-text">Home</span>
-        </a>
+        </Link>
       </div>
 
       {/* Center Section - Search */}
@@ -92,7 +92,7 @@ export default function Navbar({ onToggleSidebar }) {
       {/* Right Section - User Info and Logout */}
       <div className="nav-right">
         <div className="user-info">
-          <span className="user-name">{user?.fullName || user?.name || "Admin"}</span>
+          <span className="user-name">{user?.username || user?.fullName}</span>
         </div>
 
         <button className="logout-btn" onClick={handleLogout} title="Logout">

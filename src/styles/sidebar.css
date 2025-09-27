@@ -2,38 +2,37 @@
 .sidebar {
   width: 250px;
   min-height: 100vh;
-  background-color: #222d32;
-  color: #fff;
-  padding: 10px 0;
-}
-.main-sidebar {
-  width: 50px;
-  background-color: #222d32;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  padding: 15px 10px;
+  background-color: #2A154D;
+  color: #D1D5DB;
+  padding: 0;
+  margin-top: 0;
+  position: sticky;
+  height: 100vh;
+  overflow-y: auto;
+  top: 0;
+  z-index: 40;
+  transition: width 0.3s ease;
 }
 
-/* Brand */
 .brand-link {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
+  align-items: left;
+  justify-content: left;
+  padding: 11px 0;
   text-decoration: none;
-  color: #fff;
+  background-color: #7a46e2;
+  margin: 0;
+  color: #D1D5DB;
   font-weight: bold;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(243, 236, 34, 0.2);
 }
 
 .brand-image {
   width: 40px;
-  margin-right: 10px;
   border-radius: 50%;
+  transition: width 0.3s ease, height 0.3s ease;
 }
 
-/* User Panel */
 .user-panel {
   display: flex;
   align-items: center;
@@ -45,17 +44,23 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  transition: all 0.3s ease;
 }
 
 .user-panel .info {
   margin-left: 10px;
   font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 /* Menu */
 .menu {
   flex: 1;
   padding: 10px 0;
+}
+
+.menu ul {
+  padding-left: 0;
 }
 
 .menu-item {
@@ -65,6 +70,7 @@
 .menu-title {
   display: flex;
   align-items: center;
+  text-align: left;
   padding: 12px 15px;
   cursor: pointer;
   color: #cfd8dc;
@@ -73,11 +79,12 @@
 
 .menu-title:hover {
   background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
 }
 
 .menu-title p {
   flex: 1;
-  margin: 0 10px;
+  margin: 0;
   font-weight: 500;
 }
 
@@ -91,16 +98,18 @@
 
 /* Submenu */
 .submenu {
-  padding-left: 20px;
+  margin-left: 0;
 }
 
 .submenu li {
+  padding-left: 20px;
   list-style: none;
+  border-left: 4px solid #F39C12;
 }
 
 .submenu a {
   display: flex;
-  align-items: center;
+  align-items: left;
   padding: 8px 15px;
   text-decoration: none;
   color: #e0e0e0;
@@ -110,32 +119,88 @@
 
 .submenu a:hover {
   background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  color: #D1D5DB;
 }
 
 .submenu i {
   margin-right: 8px;
 }
 
-/* Logout Button */
-.logout {
-  margin-top: auto;
-  padding: 10px 15px;
+/* Collapsed Sidebar */
+.sidebar-collapsed .sidebar {
+  width: 50px; /* collapsed width */
 }
 
-.logout button {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  background: transparent;
-  border: none;
-  color: #e57373;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 10px 0;
-  transition: color 0.2s;
+.sidebar-collapsed .brand-link span,
+.sidebar-collapsed .user-panel .info {
+  display: none; /* hide brand text and username */
 }
 
-.logout button:hover {
-  color: #ff5252;
+.sidebar-collapsed .user-panel .image img {
+  width: 30px;
+  height: 30px; /* shrink admin image */
 }
+
+.sidebar-collapsed .menu-title p,
+.sidebar-collapsed .menu-title .arrow {
+  display: none; /* hide top-level menu text and arrow */
+}
+
+.sidebar-collapsed .submenu {
+  display: none; /* hide all submenu items */
+}
+
+.sidebar-collapsed .submenu a i {
+  margin-right: 0; /* remove spacing in case any icons exist */
+}
+
+.sidebar-collapsed .submenu a {
+  justify-content: center;
+  padding: 8px 0; /* center icons only */
+}
+
+/* Open submenu with smooth animation */
+.menu-item .submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.menu-item.open .submenu {
+  max-height: 500px; /* large enough to fit submenu */
+  opacity: 1;
+}
+
+/* Highlight active submenu link */
+.submenu a.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #FFD700; /* golden highlight */
+  font-weight: 600;
+}
+
+/* Add hover effect for top-level menu */
+.menu-title:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFD700;
+  border-radius: 6px;
+}
+
+/* Arrow animation */
+.arrow {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+.arrow.rotate {
+  transform: rotate(-90deg);
+}
+
+/* Submenu links hover */
+.submenu a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFD700;
+  border-radius: 6px;
+}
+
+/* Collapsed Sidebar adjustments remain unchanged */
+.sidebar-collapsed .submenu { display: none; }

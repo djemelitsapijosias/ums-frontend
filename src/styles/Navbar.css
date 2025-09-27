@@ -1,7 +1,7 @@
 /* Navbar layout */
 .main-header.navbar {
-  background-color: #1A237E;
-  color: #fff;
+  background-color: #2A154D;
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   padding: 8px 16px;
@@ -27,9 +27,9 @@
 
 /* Icon button (hamburger / search button) */
 .icon-btn {
-  background: transparent;
+  background: #7a46e2;
   border: none;
-  color: #fff;
+  color: #FFFFFF;
   font-size: 1.05rem;
   padding: 8px;
   display: inline-flex;
@@ -45,14 +45,13 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #fff;
+  color: #FFFFFF;
   text-decoration: none;
   padding: 6px 8px;
   border-radius: 6px;
 }
 .home-link:hover { background: rgba(255,255,255,0.04); }
-.home-icon { font-size: 1rem; }
-.home-text { font-weight: 600; }
+.home-icon { font-size: 2rem; }
 
 /* Search area */
 .search-form { width: 100%; max-width: 640px; display:flex; justify-content:center; }
@@ -70,18 +69,18 @@
   border: none;
   outline: none;
   background: transparent;
-  color: #fff;
+  color: #FFFFFF;
   padding: 8px 10px;
   width: 100%;
   font-size: 0.95rem;
 }
 .search-input::placeholder { color: rgba(255,255,255,0.7); }
 .search-btn {
-  background: #3949AB;
+  background: #7a46e2;
   border-radius: 6px;
   padding: 8px 10px;
   margin-left: 6px;
-  color: #fff;
+  color: #FFFFFF;
   border: none;
   display: inline-flex;
   align-items: center;
@@ -90,7 +89,7 @@
 
 /* Right side: user + logout */
 .user-info {
-  color: #fff;
+  color: #FFFFFF;
   font-weight: 600;
   margin-right: 6px;
 }
@@ -99,8 +98,8 @@
   align-items: center;
   gap: 8px;
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.08);
-  color: #ffebee;
+  border: 1px solid rgba(228, 181, 25, 0.08);
+  color: #FFFFFF;
   padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
@@ -108,8 +107,8 @@
 }
 .logout-btn:hover {
   background: rgba(255,255,255,0.05);
-  color: #fff;
-  border-color: rgba(255,255,255,0.14);
+  color: #FFFFFF;
+  border-color: #F39C12;
 }
 .logout-text { display: inline-block; font-size: 0.95rem; }
 
@@ -122,10 +121,10 @@
 
 /* SweetAlert2 custom classes (if you use customClass) */
 .swal-confirm-btn {
-  background-color: #1A237E !important;
+  background-color: #7a46e2 !important;
   color: white !important;
 }
 .swal-cancel-btn {
-  background-color: #d33 !important;
+  background-color: #F39C12 !important;
   color: white !important;
 }

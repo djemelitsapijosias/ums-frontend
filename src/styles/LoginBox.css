@@ -10,7 +10,7 @@
 .login-box {
   width: 350px;
   padding: 20px;
-  border: 1px solid #5c5a5a;
+  border: 1px solid #7a46e2;
   background-color: transparent;
   text-align: center;
 }
@@ -54,7 +54,7 @@
 .fb-login {
   background: none;
   border: none;
-  color: #1877f2;
+  color: #0d74fa;
   font-weight: bold;
   cursor: pointer;
   margin-top: 10px;
@@ -94,7 +94,7 @@
 }
 .btn.primary {
   font-weight: bold;
-  background-color: #007bff;
+  background-color: #7a46e2;
   color: white;
 }
 .btn.secondary {
