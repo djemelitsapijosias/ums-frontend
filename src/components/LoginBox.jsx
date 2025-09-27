@@ -24,7 +24,7 @@ function LoginBox() {
       // ✅ Success popup
       Swal.fire({
         icon: "success",
-        title: "Login Successful",
+        title: "Login Successful 🎉",
         text: `Welcome back, ${user.fullName || user.username || "User"}!`,
         timer: 2000,
         showConfirmButton: false,
