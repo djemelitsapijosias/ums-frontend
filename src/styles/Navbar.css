@@ -1,7 +1,7 @@
 /* Navbar layout */
 .main-header.navbar {
-  background-color: #2A154D;
-  color: #FFFFFF;
+  background-color: #2a154d;
+  color: #ffffff;
   display: flex;
   align-items: center;
   padding: 8px 16px;
@@ -9,7 +9,7 @@
   position: sticky;
   top: 0;
   z-index: 40;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 /* Left / center / right layout */
@@ -21,15 +21,24 @@
 }
 
 /* Distribute: left and right fixed, center grows */
-.nav-left { flex: 0 0 auto; gap: 8px; }
-.nav-center { flex: 1 1 auto; justify-content: center; }
-.nav-right { flex: 0 0 auto; gap: 12px; }
+.nav-left {
+  flex: 0 0 auto;
+  gap: 8px;
+}
+.nav-center {
+  flex: 1 1 auto;
+  justify-content: center;
+}
+.nav-right {
+  flex: 0 0 auto;
+  gap: 12px;
+}
 
 /* Icon button (hamburger / search button) */
 .icon-btn {
   background: #7a46e2;
   border: none;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 1.05rem;
   padding: 8px;
   display: inline-flex;
@@ -38,49 +47,79 @@
   cursor: pointer;
   border-radius: 6px;
 }
-.icon-btn:hover { background: rgba(255,255,255,0.06); }
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border:1px solid #f39c12;
+}
 
 /* Home link */
 .home-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
   padding: 6px 8px;
   border-radius: 6px;
 }
-.home-link:hover { background: rgba(255,255,255,0.04); }
-.home-icon { font-size: 2rem; }
+.home-link:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid #f39c12;
+}
+.home-link:active {
+  background: #f39c12;
+  border: 1px solid #f39c12;
+}
+.home-icon {
+  font-size: 2rem;
+}
 
 /* Search area */
-.search-form { width: 100%; max-width: 640px; display:flex; justify-content:center; }
+.search-form {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  justify-content: center;
+}
 .search-wrapper {
   display: flex;
   align-items: center;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
   padding: 4px;
   border-radius: 8px;
   width: 100%;
   max-width: 560px;
-  box-shadow: inset 0 1px 0 rgba(0,0,0,0.02);
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+.search-wrapper:hover {
+  border: 1px solid #f39c12;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 560px;
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.02);
 }
 .search-input {
   border: none;
   outline: none;
   background: transparent;
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 8px 10px;
   width: 100%;
   font-size: 0.95rem;
 }
-.search-input::placeholder { color: rgba(255,255,255,0.7); }
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
 .search-btn {
   background: #7a46e2;
   border-radius: 6px;
   padding: 8px 10px;
   margin-left: 6px;
-  color: #FFFFFF;
+  color: #ffffff;
   border: none;
   display: inline-flex;
   align-items: center;
@@ -89,7 +128,7 @@
 
 /* Right side: user + logout */
 .user-info {
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 600;
   margin-right: 6px;
 }
@@ -99,24 +138,38 @@
   gap: 8px;
   background: transparent;
   border: 1px solid rgba(228, 181, 25, 0.08);
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
 }
 .logout-btn:hover {
-  background: rgba(255,255,255,0.05);
-  color: #FFFFFF;
-  border-color: #F39C12;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border-color: #f39c12;
 }
-.logout-text { display: inline-block; font-size: 0.95rem; }
+.logout-btn:active {
+  background: #f39c12;
+  color: #ffffff;
+  border-color: #f39c12;
+}
+.logout-text {
+  display: inline-block;
+  font-size: 0.95rem;
+}
 
 /* Small screens */
 @media (max-width: 800px) {
-  .search-form { display: none; } /* hide search on small screens */
-  .user-name { display: none; }
-  .home-text { display: none; }
+  .search-form {
+    display: none;
+  } /* hide search on small screens */
+  .user-name {
+    display: none;
+  }
+  .home-text {
+    display: none;
+  }
 }
 
 /* SweetAlert2 custom classes (if you use customClass) */
@@ -125,6 +178,6 @@
   color: white !important;
 }
 .swal-cancel-btn {
-  background-color: #F39C12 !important;
+  background-color: #f39c12 !important;
   color: white !important;
 }

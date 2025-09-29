@@ -10,7 +10,7 @@ const ActivityLogsCard = ({ title, bgColor, logs }) => {
         {logs.length > 0 ? (
           <ul className="list-group">
             {logs.map((log, index) => (
-              <li className="list-group-item" key={index}>
+              <li className="list-group-item" style={{backgroundColor:"#e4daf7", border:"1px solid #d2c4f0ff"}} key={index}>
                 <strong>{log.name}</strong> {log.action} on <em>{log.page}</em>
                 <br />
                 <small>{log.logged_at}</small>

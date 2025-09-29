@@ -80,6 +80,7 @@
 .menu-title:hover {
   background: rgba(255, 255, 255, 0.1);
   color: #FFFFFF;
+  border: 1px solid #F39C12;
 }
 
 .menu-title p {
@@ -120,6 +121,7 @@
 .submenu a:hover {
   background: rgba(255, 255, 255, 0.1);
   color: #D1D5DB;
+  border: 1px solid #F39C12;
 }
 
 .submenu i {

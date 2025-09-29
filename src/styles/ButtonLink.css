@@ -1,0 +1,48 @@
+.bnt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* space between icon and text */
+  padding: 10px 16px;
+  margin: 5px;
+  background: linear-gradient(135deg, #7a46e2, #5e2bb8);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 3px 8px rgba(122, 70, 226, 0.3);
+}
+.btn-a{
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.bnt-link:hover {
+  background: linear-gradient(135deg, #5e2bb8, #7a46e2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(122, 70, 226, 0.4);
+  border: 2px solid #f39c12;
+}
+
+.bnt-link:active {
+  transform: translateY(0);
+  background: #4c1c99;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.bnt-link:focus {
+  outline: 2px solid #f39c12;
+  outline-offset: 2px;
+}
+
+.bnt-link .icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.bnt-link .text {
+  line-height: 1;
+}

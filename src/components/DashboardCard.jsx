@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "../styles/dashboardcard.css";
 
 const DashboardCard = ({ icon, title, value, progress, color, link }) => {
   return (
-    <a href={link}>
+    <Link to={link} style={{textDecorationLine: "none"}}>
       <div className="dashboard-card">
         <div className={`dashboard-icon ${color}`}>{icon}</div>
         <div className="dashboard-content">
@@ -16,7 +18,7 @@ const DashboardCard = ({ icon, title, value, progress, color, link }) => {
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 

@@ -10,7 +10,7 @@ const TimetableCard = ({ title, bgColor, items }) => {
         {items.length > 0 ? (
           <ul className="list-group">
             {items.map((cls, index) => (
-              <li className="list-group-item" key={index}>
+              <li className="list-group-item" style={{backgroundColor:"#e4daf7", border:"1px solid #d2c4f0ff"}} key={index}>
                 <strong>{cls.course_name}</strong> | SESSION: {cls.session_name} <br />
                 TIME: {cls.time_shift} | BY: {cls.lecturer_name}
               </li>

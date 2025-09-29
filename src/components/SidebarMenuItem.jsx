@@ -15,6 +15,7 @@ const SidebarMenuItem = ({ title, icon, items, activeMenu, setActiveMenu, id }) 
     <li className={`menu-item ${isOpen ? "open" : ""}`}>
       <div className="menu-title" onClick={handleToggle}>
         {icon}
+        <span>&nbsp;&nbsp;</span>
         <p>{title}</p>
         {items && items.length > 0 && <span className={`arrow ${isOpen ? "rotate" : ""}`}>&gt;</span>}
       </div>

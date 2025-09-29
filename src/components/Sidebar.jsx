@@ -27,10 +27,10 @@ function Sidebar() {
       title: "USER-C-PANEL",
       icon: <FaUserCog className="text-info" />,
       items: [
-        { label: "Accountants", icon: "fas fa-calculator", path: "/accountants" },
-        { label: "Secretaries", icon: "fas fa-user-tie", path: "/secretaries" },
-        { label: "Lecturers", icon: "fas fa-chalkboard-teacher", path: "/teachers" },
-        { label: "Students", icon: "fas fa-user-graduate", path: "/students" },
+        { label: "Accountants", icon: "", path: "/accountants" },
+        { label: "Secretaries", icon: "", path: "/secretaries" },
+        { label: "Lecturers", icon: "", path: "/teachers" },
+        { label: "Students", icon: "", path: "/students" },
       ],
     },
     {
@@ -38,8 +38,8 @@ function Sidebar() {
       title: "FEE-C-PANEL",
       icon: <FaCoins className="text-warning" />,
       items: [
-        { label: "Student Payments", icon: "fas fa-wallet", path: "/student-payments" },
-        { label: "Record New Payment", icon: "fas fa-file-invoice-dollar", path: "/record-payment" },
+        { label: "Student Payments", icon: "", path: "/student-payments" },
+        { label: "Record New Payment", icon: "", path: "/record-payment" },
       ],
     },
     {
@@ -47,10 +47,10 @@ function Sidebar() {
       title: "DATA-C-PANEL",
       icon: <FaSlidersH className="text-primary" />,
       items: [
-        { label: "Student Enrollment", icon: "fas fa-user-plus", path: "/enroll" },
-        { label: "Grades Management", icon: "fas fa-clipboard-check", path: "/grades" },
-        { label: "Course Setup", icon: "fas fa-plus-square", path: "/coursesetup" },
-        { label: "Set Time Table", icon: "fas fa-clipboard", path: "/timetable" },
+        { label: "Student Enrollment", icon: "", path: "/enroll" },
+        { label: "Grades Management", icon: "", path: "/grades" },
+        { label: "Course Setup", icon: "", path: "/coursesetup" },
+        { label: "Set Time Table", icon: "", path: "/timetable" },
       ],
     },
     {
@@ -58,10 +58,10 @@ function Sidebar() {
       title: "Academic Database",
       icon: <FaDatabase style={{ color: "violet" }} />,
       items: [
-        { label: "Departments", icon: "fas fa-building", path: "/departments" },
-        { label: "Specialties", icon: "fas fa-project-diagram", path: "/specialties" },
-        { label: "Academic Programs", icon: "fas fa-stream", path: "/programs" },
-        { label: "Courses", icon: "fas fa-book-open", path: "/courses" },
+        { label: "Departments", icon: "", path: "/departments" },
+        { label: "Specialties", icon: "", path: "/specialties" },
+        { label: "Academic Programs", icon: "", path: "/programs" },
+        { label: "Courses", icon: "", path: "/courses" },
       ],
     },
     {
@@ -69,8 +69,8 @@ function Sidebar() {
       title: "Documents & Reports",
       icon: <FaFileAlt />,
       items: [
-        { label: "Academic Transcripts", icon: "fas fa-scroll", path: "/transcripts" },
-        { label: "Students Id's", icon: "fas fa-id-card", path: "/student-ids" },
+        { label: "Academic Transcripts", icon: "", path: "/transcripts" },
+        { label: "Students Id's", icon: "", path: "/student-ids" },
       ],
     },
     {
@@ -78,8 +78,8 @@ function Sidebar() {
       title: "Batch Processing",
       icon: <FaFolderOpen className="text-warning" />,
       items: [
-        { label: "Batch Transcripts", icon: "fas fa-scroll", path: "/batch-transcripts" },
-        { label: "Batch Student Id's", icon: "fas fa-id-card", path: "/batch-student-ids" },
+        { label: "Batch Transcripts", icon: "", path: "/batch-transcripts" },
+        { label: "Batch Student Id's", icon: "", path: "/batch-student-ids" },
       ],
     },
     {
@@ -87,16 +87,16 @@ function Sidebar() {
       title: "UMS Blog",
       icon: <FaBlog className="text-success" />,
       items: [
-        { label: "New Post", icon: "fas fa-edit", path: "/new-post" },
-        { label: "View Posts", icon: "fas fa-newspaper", path: "/view-posts" },
-        { label: "Manage Posts", icon: "fas fa-tasks", path: "/manage-posts" },
+        { label: "New Post", icon: "", path: "/new-post" },
+        { label: "View Posts", icon: "", path: "/view-posts" },
+        { label: "Manage Posts", icon: "", path: "/manage-posts" },
       ],
     },
     {
       id: 8,
       title: "System Settings",
       icon: <FaCogs className="text-secondary" />,
-      items: [{ label: "Backup & Recovery", icon: "fas fa-history", path: "/backup" }],
+      items: [{ label: "Backup & Recovery", icon: "", path: "/backup" }],
     },
   ];
 
